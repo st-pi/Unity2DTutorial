@@ -1,0 +1,35 @@
+# Auto detect text files and normalize to LF in the repository
+* text=auto eol=lf
+
+# Unity YAML — keep LF, and let Unity's SmartMerge handle conflicts
+*.unity           text eol=lf merge=unityyamlmerge diff
+*.prefab          text eol=lf merge=unityyamlmerge diff
+*.asset           text eol=lf merge=unityyamlmerge diff
+*.meta            text eol=lf merge=unityyamlmerge diff
+*.mat             text eol=lf merge=unityyamlmerge diff
+*.anim            text eol=lf merge=unityyamlmerge diff
+*.controller      text eol=lf merge=unityyamlmerge diff
+*.physicMaterial  text eol=lf merge=unityyamlmerge diff
+*.physicsMaterial2D text eol=lf merge=unityyamlmerge diff
+
+# Source and config
+*.cs              text eol=lf diff=csharp
+*.shader          text eol=lf
+*.json            text eol=lf
+*.md              text eol=lf
+
+# Binary assets — never touch, never diff
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.gif    binary
+*.psd    binary
+*.aseprite binary
+*.wav    binary
+*.mp3    binary
+*.ogg    binary
+*.fbx    binary
+*.ttf    binary
+*.otf    binary
+*.dll    binary
+*.unitypackage binary
