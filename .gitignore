@@ -9,6 +9,9 @@
 [Mm]emoryCaptures/
 [Rr]ecordings/
 
+# UI Toolkit XSD schemas, regenerated via Assets > UI Toolkit > Update UIElements Schema
+/[Uu]IElements[Ss]chema/
+
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 
