@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 	private BoardManager m_Board;
 	private Vector2Int m_CellPosition;
 
+	private bool m_IsGameOver;
+
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
@@ -16,6 +18,16 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		if (m_IsGameOver)
+		{
+			if (Keyboard.current.enterKey.wasPressedThisFrame)
+			{
+				GameManager.Instance.StartNewGame();
+			}
+
+			return;
+		}
+
 		Vector2Int newCellTarget = m_CellPosition;
 
 		bool hasMoved = false;
@@ -49,8 +61,16 @@ public class PlayerController : MonoBehaviour
 			if (cellData != null && cellData.Passable)
 			{
 				GameManager.Instance.TurnManager.Tick();
-				MoveTo(newCellTarget);
-				cellData.ContainedObject?.PlayerEntered();
+
+				if (cellData.ContainedObject == null)
+				{
+					MoveTo(newCellTarget);
+				}
+				else if (cellData.ContainedObject.PlayerWantsToEnter())
+				{
+					MoveTo(newCellTarget);
+					cellData.ContainedObject.PlayerEntered();
+				}
 			}
 		}
 	}
@@ -66,5 +86,15 @@ public class PlayerController : MonoBehaviour
 	{
 		m_CellPosition = cell;
 		transform.position = m_Board.CellToWorld(m_CellPosition);
+	}
+
+	public void GameOver()
+	{
+		m_IsGameOver = true;
+	}
+
+	public void Init()
+	{
+		m_IsGameOver = false;
 	}
 }

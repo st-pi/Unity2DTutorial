@@ -617,10 +617,10 @@ MonoBehaviour:
   Width: 8
   Height: 8
   GroundTiles:
-  - {fileID: 11400000, guid: cfb88dcc324b171458811c4618338d04, type: 2}
-  - {fileID: 11400000, guid: e1fd054eac739c44d87d9a6f3c502cd0, type: 2}
-  - {fileID: 11400000, guid: 2d17ba30877975644a467214fa32c1a6, type: 2}
-  - {fileID: 11400000, guid: b36a89f5ef7b6e448861cb27bbf76f45, type: 2}
+  - {fileID: 11400000, guid: 508ee83fb1750c140bc0505929b2bc92, type: 2}
+  - {fileID: 11400000, guid: 7634fa06ba298384ebd1fef4c125700b, type: 2}
+  - {fileID: 11400000, guid: 9d509dbbed874fe4fbaf6dacca35839c, type: 2}
+  - {fileID: 11400000, guid: 07d9e7dcd6f82eb4f8091b046c6a9a3f, type: 2}
   WallTiles:
   - {fileID: 11400000, guid: 1821c6b61deee4a4ba8e8305ae56c6cf, type: 2}
   - {fileID: 11400000, guid: cc1b9e164444d1d40ba85e9c41f4a00b, type: 2}
@@ -630,6 +630,10 @@ MonoBehaviour:
   - {fileID: 6995051418662485615, guid: 86dd5a63c4eb2d24cbe9262fc80bf901, type: 3}
   FoodMinAmount: 2
   FoodMaxAmount: 5
+  WallPrefabs:
+  - {fileID: 5404862741413382568, guid: 94f8a2859fdb30444b128b017b4dd3f0, type: 3}
+  - {fileID: 5404862741413382568, guid: e6fd36d8f3239f0468e494bb494de254, type: 3}
+  ExitCellPrefab: {fileID: 306003771911141582, guid: 10857743719eeb34499f7ccef485f537, type: 3}
 --- !u!1 &1337944484
 GameObject:
   m_ObjectHideFlags: 0
