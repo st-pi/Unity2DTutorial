@@ -26,6 +26,7 @@ public class BoardManager : MonoBehaviour
 	public int FoodMaxAmount;
 	public WallObject[] WallPrefabs;
 	public ExitCellObject ExitCellPrefab;
+	public Enemy[] EnemyPrefabs;
 
 	public void Init()
 	{
@@ -65,6 +66,7 @@ public class BoardManager : MonoBehaviour
 
 		GenerateFood();
 		GenerateWall();
+		GenerateEnemies();
 	}
 
 	// Update is called once per frame
@@ -114,6 +116,20 @@ public class BoardManager : MonoBehaviour
 			m_EmptyCellsList.RemoveAt(randomIndex);
 			WallObject newWall = Instantiate(WallPrefabs[Random.Range(0, WallPrefabs.Length)]);
 			AddObject(newWall, coord);
+		}
+	}
+
+	private void GenerateEnemies()
+	{
+		int enemyCount = Random.Range(1, 3);
+		for (int i = 0; i < enemyCount; ++i)
+		{
+			int randomIndex = Random.Range(0, m_EmptyCellsList.Count);
+			Vector2Int coord = m_EmptyCellsList[randomIndex];
+
+			m_EmptyCellsList.RemoveAt(randomIndex);
+			Enemy newEnemy = Instantiate(EnemyPrefabs[Random.Range(0, EnemyPrefabs.Length)]);
+			AddObject(newEnemy, coord);
 		}
 	}
 

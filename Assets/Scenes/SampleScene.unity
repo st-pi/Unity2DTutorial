@@ -634,6 +634,9 @@ MonoBehaviour:
   - {fileID: 5404862741413382568, guid: 94f8a2859fdb30444b128b017b4dd3f0, type: 3}
   - {fileID: 5404862741413382568, guid: e6fd36d8f3239f0468e494bb494de254, type: 3}
   ExitCellPrefab: {fileID: 306003771911141582, guid: 10857743719eeb34499f7ccef485f537, type: 3}
+  EnemyPrefabs:
+  - {fileID: -265436264871422582, guid: 87ee76bb6fcbed14a88e6466c70c98d7, type: 3}
+  - {fileID: 571535525540542243, guid: 35d6ea498b007174e9e23d83d461ff7f, type: 3}
 --- !u!1 &1337944484
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,7 +668,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5898204d612d9744ad8cc7ca1f928bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCharacter
-  MoveSpeed: 4
 --- !u!212 &1337944486
 SpriteRenderer:
   serializedVersion: 2
@@ -793,6 +795,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   BoardManager: {fileID: 907060348}
   PlayerController: {fileID: 1337944485}
+  MoveSpeed: 4
+  TurnStepDelay: 0.5
   UIDoc: {fileID: 225052939}
 --- !u!4 &1483748065
 Transform:

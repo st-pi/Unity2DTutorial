@@ -7,8 +7,11 @@ public class GameManager : MonoBehaviour
 
 	public BoardManager BoardManager;
 	public PlayerController PlayerController;
+	public float MoveSpeed = 4.0f;
+	public float TurnStepDelay = 0.15f;
 
 	public TurnManager TurnManager { get; private set; }
+	public ObjectMover ObjectMover { get; private set; }
 
 	public UIDocument UIDoc;
 	private Label m_FoodLabel;
@@ -29,10 +32,11 @@ public class GameManager : MonoBehaviour
 		Instance = this;
 	}
 
-	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
 	{
-		TurnManager = new TurnManager();
+		ObjectMover = new ObjectMover(MoveSpeed);
+
+		TurnManager = new TurnManager(ObjectMover, TurnStepDelay);
 		TurnManager.OnTick += OnTurnHappen;
 
 		m_FoodLabel = UIDoc.rootVisualElement.Q<Label>("FoodLabel");
@@ -51,6 +55,8 @@ public class GameManager : MonoBehaviour
 		m_FoodAmount = 20;
 		m_FoodLabel.text = "Food : " + m_FoodAmount;
 
+		ObjectMover.Clear();
+		TurnManager.Reset();
 		BoardManager.Clean();
 		BoardManager.Init();
 
@@ -58,10 +64,10 @@ public class GameManager : MonoBehaviour
 		PlayerController.Spawn(BoardManager, new Vector2Int(1, 1));
 	}
 
-	// Update is called once per frame
 	void Update()
 	{
-
+		ObjectMover.Tick(Time.deltaTime);
+		TurnManager.Update(Time.deltaTime);
 	}
 
 	private void OnTurnHappen()
@@ -85,6 +91,8 @@ public class GameManager : MonoBehaviour
 
 	public void NewLevel()
 	{
+		ObjectMover.Clear();
+		TurnManager.Reset();
 		BoardManager.Clean();
 		BoardManager.Init();
 		PlayerController.Spawn(BoardManager, new Vector2Int(1, 1));
